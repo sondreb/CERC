@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=480, height=800, user-scalable=no" />
+    <meta name="MobileOptimized" content="width" />
+    <meta name="HandheldFriendly" content="true" />
+    <title>Currency Exchange Rates Calculator</title>
+    <style>
+        body
+        {
+            color: White;
+            background-color: Black;
+            font-family: 'Segoe WP Semibold';
+            text-align: left;
+        }
+        h3
+        {
+            font-size: 20pt;
+        }
+        input
+        {
+            color: #ffffff;
+            background-color: #000000;
+            border: 2px solid white;
+            vertical-align: baseline;
+            font-size: 17pt;
+            min-width: 40px;
+            min-height: 40px;
+            margin: 5;
+        }
+    </style>
+</head>
+<body onload="onLoad()">
+    <div>
+        <h3>
+            Current memory usage:</h3>
+        <input id="memoryUsage" type="text" value="0" />
+        <h3>
+            Memory usage limit:</h3>
+        <input id="memoryUsageLimit" type="text" value="0" />
+        <h3>
+            Peak memory usage:</h3>
+        <input id="peakMemoryUsage" type="text" value="0" />
+        <h3>
+            Total memory:</h3>
+        <input id="totalMemory" type="text" value="0" />
+    </div>
+    <script type="text/javascript">
+        function onLoad() {
+            window.external.notify("getMemoryUsage");
+        }
+
+        function getMemoryUsageCallback(memoryUsage, memoryUsageLimit, peakMemoryUsage, totalMemory) {
+            document.getElementById("memoryUsage").value = memoryUsage;
+            document.getElementById("memoryUsageLimit").value = memoryUsageLimit;
+            document.getElementById("peakMemoryUsage").value = peakMemoryUsage;
+            document.getElementById("totalMemory").value = totalMemory;
+        }
+    </script>
+</body>
+</html>
